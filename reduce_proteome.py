@@ -6,6 +6,7 @@ transcriptome_reduced_path = 'transcriptome_clst.fasta'
 
 ### Extract headers from proteome_cdhit ###
 headers = []
+#tento subor tu nechcem
 
 with open(proteome_cdhit_path, 'r') as proteome:
     for record in SeqIO.parse(proteome, "fasta"):
