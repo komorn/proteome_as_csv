@@ -1,5 +1,6 @@
 from Bio import SeqIO
 import csv
+import pandas as pd
 
 input_file = "transcriptome.pep"
 output_file = "proteome.csv"
@@ -24,7 +25,8 @@ with open(output_file, 'w', newline='') as csvfile:
         length = header_parts[6].split(':')[1]
 
         if len(header_parts[5].split(',')) >= 3:
-            blastp = header_parts[5].split(',')[2]
+            blastp = header_parts[5].split(',')[2].split('|')[0:-1]
+            blastp = '|'.join(i for i in blastp)
             blastp_evalue = header_parts[5].split(',')[2].split('|')[-1]
         if len(header_parts[5].split(',')) >= 4:
             pfam = header_parts[5].split(',')[-1].split('|')[1]
